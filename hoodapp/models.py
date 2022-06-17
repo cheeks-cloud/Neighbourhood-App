@@ -9,3 +9,11 @@ class Profile(models.Model):
     email = models.CharField(max_length=100, default = '')
     location = models.CharField(max_length=100,blank =True)
     profile_pic = models.ImageField( upload_to='profile/', blank ='true',default='default.png')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+    def save_profile(self):
+        self.save()
+
+    
