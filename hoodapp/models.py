@@ -23,4 +23,8 @@ class Profile(models.Model):
 class Hood(models.Model):
     name = models.CharField(max_length=50)
     admin = models.ForeignKey("Profile", on_delete=models.CASCADE, related_name='hood')
+    location= models.CharField(max_length=60,null=True)
+    occupants_count = models.IntegerField(null  = True ,blank = True)
+
+
 
