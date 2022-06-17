@@ -16,4 +16,11 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
-    
+    def delete_user(self):
+        self.delete()
+
+
+class Hood(models.Model):
+    name = models.CharField(max_length=50)
+    admin = models.ForeignKey("Profile", on_delete=models.CASCADE, related_name='hood')
+
