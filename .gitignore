@@ -1,0 +1,7 @@
+virtual/
+.env
+*.pyc
+__pycache__
+db.sqlite3
+.vscode/
+migrations/
