@@ -20,11 +20,20 @@ class Profile(models.Model):
         self.delete()
 
 
-class Hood(models.Model):
+class NeighbourHood(models.Model):
     name = models.CharField(max_length=50)
     admin = models.ForeignKey("Profile", on_delete=models.CASCADE, related_name='hood')
     location= models.CharField(max_length=60,null=True)
     occupants_count = models.IntegerField(null  = True ,blank = True)
+
+    def __str__(self):
+        return f'{self.name} neighbourhood'
+
+    def save_neighbourhood(self):
+        self.save()
+
+    def delete_neighbourhood(self):
+        self.delete()
 
 
 
