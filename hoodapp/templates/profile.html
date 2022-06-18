@@ -34,7 +34,7 @@
             </p>
             <p>
               {% if profile.location %}
-              <small>{{ profile.location }}</small>
+              <small>Location: {{ profile.location }}</small>
               {% else %}
               <span class="text-danger">No Location</span>
               {% endif %}
@@ -46,13 +46,24 @@
               <span class="text-danger">No Bio</span>
               {% endif %}
             </p>
-           
           </div>
+        </div>
+        <div class="col-md-9">
+          <form action="/create/post/">
+            <input type="submit" class="btn btn-dark btn-lg" style=" background :purple;"value="Create Post" />
+          </form>
         </div>
       </div>
     </div>
   </div>
-
 </section>
+
+<div class="update-prof">
+  <div class="update">
+    <h5>{{user.username}}</h5>
+    {% if request.user is user %}  {% endif %}
+  </div>
+  <a href="{%url 'update_profile' user.id %}" class="">Update Profile</a>
+</div>
 
 {% endblock content %}
