@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 
 # Create your models here.
@@ -10,7 +13,6 @@ class NeighbourHood(models.Model):
     location= models.CharField(max_length=60,null=True)
     occupants_count = models.IntegerField(null  = True ,blank = True)
     hood_image=CloudinaryField('hood_image',null=True)
-
 
     def __str__(self):
         return f'{self.name} NeighbourHood'
@@ -40,8 +42,61 @@ class Profile(models.Model):
     def delete_user(self):
         self.delete()
 
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
 
+        if created:
+            Profile.objects.create(user=instance)
 
+    @receiver(post_save, sender=User)
+    def save_profile(sender, instance, **kwargs):
+        instance.profile.save()
+
+class Business(models.Model):
+    name = models.CharField(max_length=100)
+    category = models.CharField(max_length=120,default='')
+    email = models.CharField(max_length=200,default='')
+    description = models.TextField(default='')
+    hood = models.ForeignKey("Neighbourhood",on_delete=models.CASCADE, default='', null=True, blank=True)
+
+    def save_business(self):
+        self.save()
+
+    def create_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    @classmethod
+    def hoods_business(cls, id):
+        hoodbusiness = Business.objects.filter(hood = id)
+        return hoodbusiness
+
+    def __str__(self):
+        return f'{self.name} Business' 
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    post_image=CloudinaryField('post_image',null=True)
+    post = models.TextField()
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE,default='',related_name='owner')
+    hood = models.ForeignKey("Neighbourhood", on_delete=models.CASCADE,default='',related_name='neighbourhood_post')
+    date_posted = models.DateField(auto_now_add=True)
+
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
+
+    @classmethod
+    def hood_news(cls,id):
+        hoodnews = Post.objects.filter(hood = id)
+        return hoodnews
+
+    def __str__(self):
+        return f'{self.title} Post'
 
 
 
