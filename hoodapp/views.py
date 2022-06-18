@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from .models import *
 from .forms import *
 from django.contrib import messages
+from django.contrib.auth.models import User
+
+
 
 
 # Create your views here.
@@ -38,7 +41,7 @@ def profile(request):
         profile_form = ProfileUpdateForm(
             request.POST, request.FILES, instance=request.user.profile)
 
-        if user_form.is_valid and profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(

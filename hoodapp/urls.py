@@ -3,11 +3,10 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-urlpatterns = [
-  
-    path('',views.home,name='home'),
-    path('index/',views.index, name = 'index'),
-    
+
+urlpatterns = [ 
+  path("profile/", views.profile, name="profile"),
+  path("profile/update/", views.update_profile, name="update_profile"),
 ]
 
 if settings.DEBUG:
