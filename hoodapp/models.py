@@ -44,6 +44,11 @@ class Business(models.Model):
     def delete_business(self):
         self.delete()
 
+    @classmethod
+    def hoods_business(cls, id):
+        hoodbusiness = Business.objects.filter(hood = id)
+        return hoodbusiness
+
     def __str__(self):
         return f'{self.name} Business' 
 
