@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{% load bootstrap4%}
+{% load static %}
+
+{% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="../../../static/css/index.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Tahoma" rel="stylesheet">
+   
+
+  {% endblock %}
+
+{% block content %}
+{{block.super}}
+
+<body>
+  <div  class="slider">
+    <div class="load">
+
+    </div>
+    <div class="content">
+      <div class="principal">
+        <h1>HoodVille</h1>
+              <p>Neighborhood that sparkles</p>
+
+              <br><br>
+               
+          </div>
+      </div>
+
+  </div>
+  </div>
+
+
+    
+
+
+{% endblock %} 
