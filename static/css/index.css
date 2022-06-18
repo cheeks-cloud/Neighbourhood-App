@@ -9,9 +9,8 @@
 body {
     background-image: url('')linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
     background-color: #3c3a3a;
-    background-image: url('https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-repeat: no-repeat;
-    background-size:cover;
+    background-image: url('https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+ 
     
 }
 
@@ -50,6 +49,31 @@ body {
 }
 
 
+.load{
+    animation: slide 1s;
+}
+
+
+.slider{
+    height: 75vh;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    animation:slide 15s infinite;
+    align-items: center;
+}
+
+@keyframes slide{
+    0%{
+        background-image: url("https://images.pexels.com/photos/1654330/pexels-photo-1654330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+
+    }
+    80%{
+        background-image: url("https://images.pexels.com/photos/9716231/pexels-photo-9716231.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+
+    }
+}
 
 
 

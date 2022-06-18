@@ -9,6 +9,15 @@ from django.contrib import messages
 def home(request):
     return render(request, 'home.html')
 
+
+def index(request):
+
+ 
+
+    return render(request, 'index.html')
+   
+    
+
 def create_neighbourhood(request):
     if request.method == 'POST':
         form = NeighbourHoodForm(request.POST, request.FILES)
