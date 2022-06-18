@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <br>
+    <h2 class="text-center">Registered Businesses</h2>
+    <div class="row">
+        {% for businesses in business %}
+        <div class=" col-sm-12 col-lg-4 mb-5">
+            <div class="card">
+                <div class="mt-3 ml-3 mr-3">
+                    <p><b>Business Name:</b> {{businesses.name}}</p>
+                    <p><b>Business Category:</b> {{businesses.category}}</p>
+                    <p><b>Description:</b> {{businesses.description}}</p>
+                    <p><b>Email:</b> {{businesses.email}}</p>
+                    <p><b>Hood:</b> {{businesses.hood}}</p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+{%endblock%}
