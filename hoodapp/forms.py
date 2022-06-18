@@ -21,13 +21,13 @@ class NewUserForm(UserCreationForm):
 
 class NeighbourHoodForm(forms.ModelForm):
     class Meta:
-        model = Neighbourhood
+        model = NeighbourHood
         exclude = ('admin',)
 
 class ProfileUpdateForm(forms.ModelForm):
     
-    class Meta:
-        model = Profile
+
+				pass
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
