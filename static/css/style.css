@@ -7,22 +7,20 @@
 }
 
 body {
-  
-    background-color: #07272c;
+    background-image: url('')linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    background-color: #3c3a3a;
+    background-image: url('https://www.sobharealty.com/uploads/slider/garden-houses-project-1920x870.jpg');
     background-repeat:no-repeat;
-    opacity:1.0;
-    background-image: url("https://www.lakecountyschools.net/wp-content/uploads/2014/07/simple-blue-opera-background-light-49001.jpg");
-    background-size: cover;
  
     
 }
 
 
-.info p {
-    margin-top: 15%;
+.info  {
+    margin-top: 10%;
     font-weight: bolder;
     font-size: xx-large;
-    margin-left: 30%;
+    margin-left: 20%;
 
 }
 
@@ -46,6 +44,10 @@ body {
     background-color: rgb(250, 248, 243);
 } */
 
-
+.sticky {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+}
 
 

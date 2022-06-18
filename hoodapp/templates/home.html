@@ -1,12 +1,37 @@
-{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  {% if title %}
+ 
+  <title>Hoodville | {{title}}</title>
+  <link rel="icon" type="image/x-icon" href="https://freesvg.org/img/1402196533.png"/>
+  {% else %}
+  <title> Hoodville </title>
+  {% endif %}
 
+  {% block styles %}
+  {% bootstrap_css %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <link rel="stylesheet" href="../../../static/css/style.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Tahoma" rel="stylesheet">
+  {% endblock %}
+</head>
+<body>
+ <!--navbar-->
+  {% include "navbar.html" %}
+
+  {% block content %}
 
 <div class="container">
     <div class="row">
-        <div class="col s6 info">
+        <div class="col sm-4 info">
             <p>Holla!  Welcome to HoodVille </p>
             <h4><i>The Residence Of Cool People</i></h4> 
             
@@ -17,5 +42,21 @@
     </div>
 </div>
 
+  {% endblock content %}
 
-{% endblock %}
+
+
+<!-- footer -->
+{% include 'footer.html' %}
+
+  <!-- scripts -->
+  {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  {% bootstrap_javascript %}
+  <script src=""></script>
+  {% endblock %} 
+</body>
+</html>
+
+

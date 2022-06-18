@@ -1,14 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark text-light fixed-top mb-5" style="background-color: black; opacity: .9;">
     <a class="navbar-brand" href=""style="color: white; font-weight:700;font-size: 30px;">Hood<span style="color:#a8eaf7; font-weight:700; font-size: 30px;">&nbsp;Ville</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-        aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href=""><i class="fas fa-home"></i>&nbsp;Home <span class="sr-only">(current)</span></a>
-            </li>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"><i class="fas fa-home"></i>&nbsp;<span class="sr-only">(current)</span></a>
+        </li> 
+          
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -36,18 +38,26 @@
 
            
         </ul>
-        <form class=" form" style="margin-left:40%" role="search" action="">
-            <div class="input-group " >
-              <input type="text" class="form-control" placeholder="Search Hood" name="search"  >
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="fas fa-search  text-white"  aria-hidden="true"></i></button>
-              </div>
-            </div>
-            
-          </div>
         
-          </form>    
-        <a style="padding-right:30% ;" href=""><i class="fas fa-user text-white"></i>&nbsp;{{user.username}}</a>
+          <a style="padding-left:30% ; margin-left: 5%;" href=""><i class="fas fa-user text-white"></i>&nbsp;{{user.username}}</a>
+    
+     
+    </div>
+    <form class=" form mx-5 mt-3" role="search" action="">
+        <div class="input-group " >
+          <input type="text" class="form-control" placeholder="Search projects" name="search" style="height: 30px; width: 200px;" >
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </div>
+        </div>
+       
+
+          
+      </div>
+    
+      
+      </form>  
+      <ul>
         <li class="nav-item dropdown " style="padding-right:4%; padding-top: -2%; list-style-type: none; ">
             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Accounts&nbsp;<i class="fas fa-user-cog text-white"></i>
@@ -57,6 +67,10 @@
                 <a class="dropdown-item" href="/">Log out</a>
             </div>
         </li>
-           
-    </div>
-</nav>
+
+        </ul>
+</nav> 
+
+  
+  <br> 
+ 
