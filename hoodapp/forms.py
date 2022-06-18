@@ -1,7 +1,17 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationFor
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from .models import *
+
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        exclude = ('user',)
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ('user',) 
 
 class NeighbourHoodForm(forms.ModelForm):
     class Meta:
@@ -21,3 +31,4 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['username','email']
         
+

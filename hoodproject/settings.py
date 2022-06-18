@@ -93,8 +93,8 @@ DATABASES = {
              'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myhood',
-        'USER': 'oyesa',
-    'PASSWORD': 'Mimo33',
+        'USER': 'rachel',
+    'PASSWORD': 'hotspurs',
     }
 }
 
@@ -138,3 +138,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR, 'static/') ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
