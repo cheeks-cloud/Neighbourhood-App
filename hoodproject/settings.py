@@ -46,7 +46,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'bootstrap4',
+<<<<<<< HEAD
     'crispy_forms'
+=======
+    'crispy_forms',
+>>>>>>> 93886c50b8805376a2d181e59dd6358886f4c4e5
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 cloudinary.config(
@@ -93,8 +97,8 @@ DATABASES = {
              'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myhood',
-        'USER': 'moringa',
-    'PASSWORD': 'jaelatieno',
+        'USER': 'rachel',
+    'PASSWORD': 'hotspurs',
     }
 }
 

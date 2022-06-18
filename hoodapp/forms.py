@@ -19,6 +19,16 @@ class NewUserForm(UserCreationForm):
 
 
 
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        exclude = ('user',)
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ('user',) 
+
 class NeighbourHoodForm(forms.ModelForm):
     class Meta:
         model = NeighbourHood
@@ -26,8 +36,9 @@ class NeighbourHoodForm(forms.ModelForm):
 
 class ProfileUpdateForm(forms.ModelForm):
     
-
-				pass
+    class Meta:
+        model = Profile
+        fields = ['bio', 'profile_pic', 'location', 'email']
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
@@ -36,3 +47,4 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['username','email']
         
+
