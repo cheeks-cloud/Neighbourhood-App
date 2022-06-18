@@ -24,7 +24,11 @@ def new_business(request):
         form = BusinessForm()
     return render(request, 'new_business.html', {"form": form})
 
-def post(request):
+def post(request,id):
+    posts = Post.hood_news(id=id)
+    return render(request,'post.html',{'posts':posts})
+
+def create_post(request):
     current_user = request.user
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -39,4 +43,4 @@ def post(request):
 
     else:
         form = PostForm()
-    return render(request, 'post.html', {"form": form})
+    return render(request, 'create_post.html', {"form": form})

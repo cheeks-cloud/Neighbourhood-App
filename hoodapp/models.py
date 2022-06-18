@@ -66,6 +66,11 @@ class Post(models.Model):
     def delete_post(self):
         self.delete()
 
+    @classmethod
+    def hood_news(cls,id):
+        hoodnews = Post.objects.filter(hood = id)
+        return hoodnews
+
     def __str__(self):
         return f'{self.title} Post'
 
