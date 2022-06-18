@@ -26,6 +26,20 @@
           <div class="card-body text-center">
             <h5 class="card-text">{{ user.username }}</h5>
             <p>
+              {% if profile.email %}
+              <small>{{ profile.email }}</small>
+              {% else %}
+              <span class="text-danger">No Email</span>
+              {% endif %}
+            </p>
+            <p>
+              {% if profile.location %}
+              <small>{{ profile.location }}</small>
+              {% else %}
+              <span class="text-danger">No Location</span>
+              {% endif %}
+            </p>
+            <p>
               {% if profile.bio %}
               <small>{{ profile.bio }}</small>
               {% else %}
