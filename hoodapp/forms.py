@@ -6,3 +6,8 @@ class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
         exclude = ('user')
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ('user') 
