@@ -46,13 +46,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'bootstrap4',
-<<<<<<< HEAD
-    'crispy_forms'
-=======
     'crispy_forms',
->>>>>>> 93886c50b8805376a2d181e59dd6358886f4c4e5
 ]
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 cloudinary.config(
   cloud_name = "oyesa",
   api_key = "749352579693875",
@@ -97,7 +95,7 @@ DATABASES = {
              'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myhood',
-        'USER': 'rachel',
+        'USER': 'moringa',
     'PASSWORD': 'hotspurs',
     }
 }
