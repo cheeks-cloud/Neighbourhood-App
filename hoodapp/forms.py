@@ -4,13 +4,14 @@ from .models import *
 
 class NeighbourHoodForm(forms.ModelForm):
     class Meta:
-        model = Neighbourhood
+        model = NeighbourHood
         exclude = ('admin',)
 
 class ProfileUpdateForm(forms.ModelForm):
     
     class Meta:
         model = Profile
+        exclude = ('admin',)
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
