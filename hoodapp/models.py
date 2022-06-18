@@ -29,7 +29,7 @@ class NeighbourHood(models.Model):
     def __str__(self):
         return f'{self.name} neighbourhood'
 
-    def save_neighbourhood(self):
+    def create_neighbourhood(self):
         self.save()
 
     def delete_neighbourhood(self):
