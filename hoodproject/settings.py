@@ -46,8 +46,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'bootstrap4',
+    'crispy_forms'
 ]
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 cloudinary.config(
   cloud_name = "oyesa",
   api_key = "749352579693875",
