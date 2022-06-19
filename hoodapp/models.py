@@ -3,7 +3,13 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
 
+
+LEXERS = [item for item in get_all_lexers() if item[1]]
+LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
 
 # Create your models here.
@@ -13,7 +19,7 @@ class NeighbourHood(models.Model):
     location= models.CharField(max_length=60,null=True)
     occupants_count = models.IntegerField(null  = True ,blank = True)
     hood_image=CloudinaryField('hood_image',null=True)
-
+    
     def __str__(self):
         return f'{self.name} NeighbourHood'
 
@@ -23,7 +29,7 @@ class NeighbourHood(models.Model):
     def delete_neighbourhood(self):
         self.delete()
 
-
+   
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE , related_name='profile')
     bio = models.TextField(max_length=300,blank =True)
