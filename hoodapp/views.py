@@ -8,6 +8,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 
+from .serializers import NeighbourHoodSerializer
+from rest_framework import generics
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -52,8 +54,6 @@ def logout_request(request):
 
 
 def index(request):
-
- 
 
     return render(request, 'index.html')
 
@@ -159,3 +159,18 @@ def update_profile(request):
         }
 
     return render(request, 'update_profile.html', context)
+
+
+class NeighbourhoodList(generics.ListCreateAPIView):
+    queryset = NeighbourHood.objects.all()
+    serializer_class = NeighbourHoodSerializer
+
+class NeighbourhoodDetail(generics.RetrieveUpdateDestroyAPIView):
+   queryset = NeighbourHood.objects.all()
+   serializer_class = NeighbourHoodSerializer
+
+
+
+
+
+
