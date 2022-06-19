@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 cloudinary.config(
   cloud_name = "oyesa",
   api_key = "749352579693875",
@@ -93,7 +95,7 @@ DATABASES = {
              'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myhood',
-        'USER': 'rachel',
+        'USER': 'moringa',
     'PASSWORD': 'hotspurs',
     }
 }
@@ -140,3 +142,9 @@ STATICFILES_DIRS = [
      os.path.join(BASE_DIR, 'static/') ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
