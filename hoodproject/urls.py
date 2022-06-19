@@ -15,8 +15,30 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
+from django.contrib.auth import views 
+from hoodapp import views
+from django.conf.urls import include
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('hoodapp.urls')),
+    path('',views.home, name='home'),
+    path('index/',views.index, name='index'),
+    path('accounts/', include('django_registration.backends.one_step.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('profile-update/',views.update_profile, name='update_profile'),
+    path('accounts/profile/', auth_views.LoginView.as_view(template_name='profile.html')),
+    path('profile/<pk>/',views.profile, name = 'profile'),
+    path('create-hood/',views.createhood, name='createhood'), 
+    path('hood/<id>/',views.neighbourhood, name = 'neighbourhood'),
+    path('join_neighbourhood/<id>/', views.join_neighbourhood, name='join-neighbourhood'),
+    path('business/<id>/',views.createbusiness, name = 'create-business'),
+    path('post/<hood_id>/',views.post, name = 'post'),
+    path('change_neighbourhood/<id>/', views.change_neighbourhood, name='change-neighbourhood'),
+    path('search/',views.search_results, name='search_results'),
+    path('search_hood/',views.search_hoods, name='search_hood'),
+    path('logout/', views.logout_user, name='logout'),
+
+
 ]
