@@ -100,7 +100,7 @@ def about(request):
     Returns:
         _type_: _description_
     """
-    return render(request, 'about.html')
+    return render(request, 'hoodapp/about.html')
 
 
 def update_profile(request):
