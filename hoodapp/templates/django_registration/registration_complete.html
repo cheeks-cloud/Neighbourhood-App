@@ -1,0 +1,21 @@
+{%extends "django_registration/base.html"%} {% load bootstrap4 %} {% block content %}
+<div class="container mt-5">
+    <div class="complete">
+        <p class=" alert alert-success">Successfully Registered
+            <a href=""></a>
+        </p>
+
+        <div class="card " style="background-color:rgb(5, 66, 66);  ">
+ 
+                <div class="text-center text-light mt-4">
+                    <h1>Hey There Welcome To HoodVille!</h1>
+                    <p>Lets Get Started , Shall We?.</p>
+                    <p>Update Your Profile First Below</p>
+                    <a href="{% url 'update_profile'%}"><button class="btn-btn-lg btn-success mb-5">Update Profile</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

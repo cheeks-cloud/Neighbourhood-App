@@ -1,0 +1,38 @@
+{%extends 'base.html'%} {% load bootstrap4 %} {% load static%} {% block content%}
+<div class=" container p-5 text-center " style="margin-top:6%">
+    <div class="search">
+        {% if results %}
+        <p> We have found {{results|length}} businesses with the search term "{{message}}" in this neighbourhood.</p>
+        {% else %}
+        <p> We have found 0 businesses for the search term "{{message}}" in this neighbourhood.</p>
+        {% endif %} {% if results %}
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                {% for business in results %}
+
+                <div class="HOOD">
+                    <div class="card mb-2" style="width: 24rem;">
+
+                        <img class="card-img-top" src="{{business.image.url}}" alt="Card image cap">
+
+                        <div class="card-body">
+                            <h5 class="card-text">{{business.name}}</h5>
+                            <p><strong>Owner</strong>: {{business.user}}</p>
+                            <p>BUSINESS CONTACTS:</p>
+                            <p><i class="fas fa-phone me-2"></i> +254{{business.phone_number}}</p>
+                            <p><i class="far fa-envelope me-2"></i> {{business.email}}</p>
+                            <p class="ms-auto">Created {{business.post_date|timesince}} ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</div> {% endblock %}

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark text-light fixed-top " style="background-color: black; opacity: .9; padding-bottom: 1%;">
+    <a class="navbar-brand" href="#"style="color: white; font-weight:700;font-size: 30px;">Hood<span style="color:#057c91; font-weight:700; font-size: 30px;">&nbsp;Ville</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/index/"><i class="fas fa-home"></i>&nbsp;<span class="sr-only">(current)</span></a>
+        </li> 
+        <li class="nav-item active">
+          <a class="nav-link" href="/about/">&nbsp;<span>About</span></a>
+      </li> 
+          
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Profile&nbsp;<i class="fas fa-user-circle"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'profile' pk=user.id%}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'createhood'%}">Add Hood</a>
+                </div>
+            </li>
+    
+              <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Accounts&nbsp;<i class="fas fa-user-cog text-white"></i>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Change Password</a>
+                      <a class="dropdown-item" href="/logout/">Log out</a>
+                  </div>
+              </li>
+        </ul>
+       
+          <li class="nav-item dropdown " style="margin-left:30%;  list-style-type: none;">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  ><img src="https://www.svgrepo.com/show/88703/api.svg"/>API </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href= "/hoods/">Hoods API</a>
+              <a class="dropdown-item" href="/business/">Business API</a>
+              <a class="dropdown-item" href="/posts/">Posts API</a>
+      
+            </div>
+            
+          </li>
+         
+        
+          <a style=" margin-left: 5%; color: #fff" href="{% url 'profile' pk=user.id%}"><i class="fas fa-user text-white"></i>&nbsp;{{user.username}}</a>
+    
+ 
+
+      </div>
+        
+</nav> 
+
+  

@@ -19,20 +19,26 @@ class NewUserForm(UserCreationForm):
 
 
 
-class NeighbourHoodForm(forms.ModelForm):
+class BusinessForm(forms.ModelForm):
     class Meta:
-        model = Neighbourhood
-        exclude = ('admin',)
+        model = Business
+        fields=['image','name','email','phone_no'] 
 
-class ProfileUpdateForm(forms.ModelForm):
-    
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields=['title','info','image']  
+
+class HoodForm(forms.ModelForm):
+    class Meta:
+        model = NeighbourHood
+        fields=['name','location','description','image','health_center','health_email','health_contact'] 
+
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
+        fields=['profile_pic','bio','email','phone_no'] 
 
-class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField()
 
-    class Meta:
-        model = User
-        fields = ['username','email']
-        
+

@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Tahoma");
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+* {
+    scroll-behavior: smooth;
+    font-family: 'Tahoma';
+    margin:0;
+    padding: 0;
+    
+}
+
+:root {
+    --body-font: "Tahoma", sans-serif;
+    --theme-bg: #1f1d2b;
+    --body-color: #808191;
+    --button-bg: #353340;
+    --border-color: rgba(128, 129, 145, 0.24);
+    --video-bg: #252936;
+    --delay: 0s;
+}
+
+body {
+  
+    background-color: #07272c;
+    background-repeat:no-repeat;
+    opacity:1.0;
+    background-image: url("https://www.lakecountyschools.net/wp-content/uploads/2014/07/simple-blue-opera-background-light-49001.jpg");
+    background-size: cover;
+    overflow-x: hidden;
+ 
+    
+}
+
+
+.info p {
+    margin-top: 15%;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-left: 30%;
+
+}
+
+
+
+.info .btn {
+    background: var(--button-bg);
+    padding: 20px 35px;
+    margin: 3% 3%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s;
+    background-color: #062931;
+}
+
+.info a.btn {
+    color: #b5f423
+}
+/* a:hover{
+    background-color: rgb(250, 248, 243);
+} */
+
+
+
+
+.prof-pic {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.container {
+    background-color: rgb(4, 33, 43);
+    /* max-width: 1240px;
+    max-height: 900px; */
+    height: 100vh;
+    display: flex;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    border-radius: 20px;
+    /* font-size: 15px; */
+    font-weight: 500;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    /* justify-content: space-between; */
+}
+
+.hood-btn {
+    background-color: #0b5353;
+}
+
+.updatee {
+    padding-left: 4rem;
+}
+
+p {
+    color: white;
+}
+
+.complete {
+    text-align: center;
+    padding-left: 20rem;
+}
+
+.center {
+    text-align: center;
+    border-radius: 20px;
+}
+
+.signs {
+    text-align: center;
+    width: 120%;
+}
+
+.info {
+    position: absolute;
+    left: 14rem;
+    top: 12rem;
+    line-height: 4rem;
+}
+
+h1 {
+    color: #65ebe4;
+}
+
+.info h4 {
+    color: white;
+    text-shadow: 2px 2px 2px #04282b;
+    line-height: 3rem;
+}
+
+.card-body{
+    background-color: #093536;
+    /* width: 150%; */
+   
+}
+
+h4 {
+    color: #22f8c3;
+   
+}
+
+h3 {
+    color: #19f096;
+}
+
+title{
+    color: #fff
+}

@@ -7,28 +7,39 @@
 <head>
   <meta charset="utf-8">
   {% if title %}
+ 
   <title>Hoodville | {{title}}</title>
+  <link rel="icon" type="image/x-icon" href="https://freesvg.org/img/1402196533.png"/>
   {% else %}
   <title> Hoodville </title>
   {% endif %}
 
   {% block styles %}
   {% bootstrap_css %}
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-  <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <link rel="stylesheet" href="../../../static/css/index.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Tahoma" rel="stylesheet">
   {% endblock %}
 </head>
 <body>
- 
+ <!--navbar-->
+  {% include "navbar.html" %}
+
   {% block content %}
   {% endblock content %}
+
+
 
 <!-- footer -->
 {% include 'footer.html' %}
 
   <!-- scripts -->
   {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   {% bootstrap_javascript %}
   <script src=""></script>
   {% endblock %} 

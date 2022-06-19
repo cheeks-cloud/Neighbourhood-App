@@ -1,0 +1,166 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static%}
+
+{% block content %}
+{{block.super}}
+<style>
+
+#hood-title{
+font-size:3vw;
+color:#08403d
+}
+.load{
+    animation: slide 5s;
+}
+
+
+.slider{
+    height: 80vh;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    animation:slide 20s infinite;
+    align-items: center;
+    
+}
+.content{
+    color: #ffff;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.principal{
+    left: 50%;
+    top:50% ;
+    transform: translate(-50%,-50%) ;
+    position: absolute;
+    letter-spacing: 4px;
+    text-align: center;
+
+}
+.principal h3{
+    font-size: 35px;
+
+}
+.principal p{
+    font-size:15px;
+}
+@keyframes slide{
+    0%{
+        background-image: url("https://cdn.pixabay.com/photo/2015/11/06/11/48/multi-family-home-1026483_960_720.jpg");
+
+    }
+    20%{
+        background-image: url("https://images.pexels.com/photos/5724030/pexels-photo-5724030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        
+    }
+    20.01%{
+        background-image: url("https://images.ctfassets.net/n1no4gieqp7s/7El2NZYDUtWhqUyIHeTsAo/99b6a1cc3d3464b1337cd2996191efa4/questions-to-ask-neighborhoods-OG.jpg?w=850&q=90");
+        
+    }
+    40%{
+        background-image: url("https://images.pexels.com/photos/1654330/pexels-photo-1654330.jpeg?auto=compress&cs=tinysrgb&w=1600");
+        
+    }
+    40.01%{
+        background-image: url("https://www.lasvegasrealestate.org/wp-content/uploads/2019/01/Las-Vegas-Homes-for-Sale-view2-e1547785320804.jpg");
+        
+    }
+    60%{
+        background-image: url("https://i.pinimg.com/originals/bc/a1/36/bca1361543fb70a95fe2e2c612b7b1e9.jpg");
+        
+    }
+    60.01%{
+        background-image: url("hhttps://cdn.stocksnap.io/img-thumbs/960w/suburban-street_JDQIGEGDBB.jpg");
+        
+    }
+    80%{
+        background-image: url("https://www.wqpmag.com/sites/wqp/files/5.5suburban-street-1388617-1280x960.jpg");
+        
+    }
+    80.01%{
+        background-image: url("https://static.neighborhoods.com/blog/media/community_1_inline-73ee14a835b452400aea1cb55acc2344.jpg");
+        
+    }
+    100%{
+        background-image: url("https://writers.personalseo.com/wp-content/uploads/2022/01/street-and-houses-of-upscale-neighborhood-on-a-summer-morning-1024x682.jpg");
+        
+ 
+}
+}
+</style>
+<body>
+    
+    <div  class="slider">
+        <div class="load">
+    
+        </div>
+        <div class="content">
+            <div class="principal">
+                <h1>HOODVILLE</h1>
+                <p class="text-center" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS'; font-size: 1.8rem;">The best Neighborhood Website in The City</p>
+                <br><br>
+                
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    
+        <div class="hood">
+            <h2 class="text-center mt-3" id="hood-title">Hoodville Hoods</h2>
+            <div class=" mt-5 available-section">
+                <div class="d-flex justify-content-center">
+                                
+                    <a href="{% url 'createhood'%}"><button class="btn btn-primary hood-btn">Create a Neighbourhood <i
+                        style="color: #fff;" class="fas fa-home"></i></button>
+                      
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="" id="target-home">
+                <div class="row">
+                    {% for hood in hoods %}
+                    <div class="col-lg-4 col-md-4 col-sm-6 ">
+                        <div class="hood-list">
+                            <div class="card p-0 m-3" >
+                                {% if hood.image %}
+                                <img class="card-img-top" src="{{ hood.image.url }}" alt="Card image cap" height="300px" width="520px"> {% else %}
+                                <p>No Image</p>
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title text-white"><i class="fas fa-map-marker-alt"></i> {{hood.name}}, {{hood.location}}</h5>
+                                    <p class="card-text" >{{hood.description}}</p>
+                                    <p class="text-muted">{{hood.neighbour.count}} <i class="fas mx-1 fa-users"></i></p>
+                                    <div class="d-flex justify-content-around">
+                                        {% if request.user.profile.neighbourhood == hood %}
+                                        <a href="{% url 'neighbourhood' id=hood.id %}">
+                                            <p style="color:#37ddc7">Visit Neighbourhood</p>
+                                        </a>
+                                        <a href="{% url 'change-neighbourhood' id=hood.id %}">
+                                            <p style="color: #ecb70b">Change Neighbourhood</p>
+                                        </a>
+                                        {% elif not request.user.profile.neighbourhood %}
+                                        <a href="{% url 'join-neighbourhood' hood.id %}">
+                                            <p>Join Neighbourhood</p>
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+
+
+{% endblock %}
