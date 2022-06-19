@@ -19,7 +19,7 @@ class NeighbourHood(models.Model):
     location= models.CharField(max_length=60,null=True)
     occupants_count = models.IntegerField(null  = True ,blank = True)
     hood_image=CloudinaryField('hood_image',null=True)
-
+    
     def __str__(self):
         return f'{self.name} NeighbourHood'
 
@@ -29,7 +29,7 @@ class NeighbourHood(models.Model):
     def delete_neighbourhood(self):
         self.delete()
 
-
+   
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE , related_name='profile')
     bio = models.TextField(max_length=300,blank =True)

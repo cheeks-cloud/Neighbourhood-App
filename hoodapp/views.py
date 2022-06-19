@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 
 from .serializers import NeighbourHoodSerializer,BusinessSerializer,PostSerializer
-from rest_framework import generics
+from rest_framework import generics,permissions
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -164,25 +164,29 @@ def update_profile(request):
 class NeighbourhoodList(generics.ListCreateAPIView):
     queryset = NeighbourHood.objects.all()
     serializer_class = NeighbourHoodSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 class NeighbourhoodDetail(generics.RetrieveUpdateDestroyAPIView):
    queryset = NeighbourHood.objects.all()
    serializer_class = NeighbourHoodSerializer
-
+   permission_classes = (permissions.IsAuthenticatedOrReadOnly,) 
 class BusinessList(generics.ListCreateAPIView):
     queryset = Business.objects.all()
     serializer_class = BusinessSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 class BusinessDetail(generics.RetrieveUpdateDestroyAPIView):
    queryset = Business.objects.all()
    serializer_class = BusinessSerializer
+   permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
    queryset = Post.objects.all()
    serializer_class = PostSerializer
-
+   permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
