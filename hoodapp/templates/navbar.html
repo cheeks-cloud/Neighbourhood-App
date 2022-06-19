@@ -10,9 +10,8 @@
           <li class="nav-item active">
             <a class="nav-link" href="/index/"><i class="fas fa-home"></i>&nbsp;<span class="sr-only">(current)</span></a>
         </li> 
-
         <li class="nav-item active">
-          <a class="nav-link" href="/about/"> &nbsp;<span>About</span></a>
+          <a class="nav-link" href="/about/">&nbsp;<span>About</span></a>
       </li> 
           
             <li class="nav-item dropdown">
@@ -25,40 +24,33 @@
                     <a class="dropdown-item" href="{% url 'createhood'%}">Add Hood</a>
                 </div>
             </li>
-
     
               <li class="nav-item dropdown ">
                   <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Accounts&nbsp;<i class="fas fa-user-cog text-white"></i>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="accounts/changepassword/">Change Password</a>
-                      <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                      <a class="dropdown-item" href="#">Change Password</a>
+                      <a class="dropdown-item" href="/logout/">Log out</a>
                   </div>
               </li>
-      
-              
         </ul>
-        
-          <a style="padding-left:30% ; margin-left: 5%; color: #fff" href="{% url 'profile' pk=user.id%}"><i class="fas fa-user text-white"></i>&nbsp;{{user.username}}</a>
-    
-     
-    
-    <form class=" form mx-5 mt-3" role="search" action="{% url 'search_hood' %}">
-        <div class="input-group " >
-          <input type="text" class="form-control" placeholder="Search Hood" name="search_hood" style="height: 30px; width: 200px;" >
-          <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="fa fa-search text-white" aria-hidden="true"></i></button>
-          </div>
-        </div>
        
-
-          
-      </div>
-    
+          <li class="nav-item dropdown " style="margin-left:30%;  list-style-type: none;">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  ><img src="https://www.svgrepo.com/show/88703/api.svg"/>API </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href= "/hoods/">Hoods API</a>
+              <a class="dropdown-item" href="/business/">Business API</a>
+              <a class="dropdown-item" href="/posts/">Posts API</a>
       
-      </form>  
-   
+            </div>
+            
+          </li>
+         
+        
+          <a style=" margin-left: 5%; color: #fff" href="{% url 'profile' pk=user.id%}"><i class="fas fa-user text-white"></i>&nbsp;{{user.username}}</a>
+    
+ 
 
       </div>
         

@@ -37,8 +37,7 @@ urlpatterns = [
     path('post/<hood_id>/',views.post, name = 'post'),
     path('change_neighbourhood/<id>/', views.change_neighbourhood, name='change-neighbourhood'),
     path('search/',views.search_results, name='search_results'),
-    path('search_hood/',views.search_hoods, name='search_hood'),
-    path('logout/', views.logout_user, name='logout'),
-
-
+    path('api/', include('rest_framework.urls')),
+    path('', include('hoodapp.urls')),
+    path('logout/', auth_views.logout_then_login, name='logout'),
 ]

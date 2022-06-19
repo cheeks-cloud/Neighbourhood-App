@@ -2,6 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from tinymce.models import HTMLField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
+
+
+LEXERS = [item for item in get_all_lexers() if item[1]]
+LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
 
 # Create your models here.
@@ -41,13 +50,13 @@ class NeighbourHood(models.Model):
         hoods=NeighbourHood.objects.filter(id=neighborhood_id) 
         return hoods
             
-    @classmethod
-    def search_by_name(cls,search_term):
-        """
-        A method that searches a neighborhood
-        """          
-        neighborhood = cls.objects.filter(name__icontains = search_term).all()
-        return neighborhood
+    # @classmethod
+    # def search_by_name(cls,search_term):
+    #     """
+    #     A method that searches a neighborhood
+    #     """          
+    #     neighborhood = cls.objects.filter(name__icontains = search_term).all()
+    #     return neighborhood
     
     @classmethod
     def update_neighbourhood(cls, id):
@@ -63,7 +72,7 @@ class NeighbourHood(models.Model):
         """
         self.delete() 
 
-
+   
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE , related_name='profile')
     bio = models.TextField(max_length=300,blank =True)
@@ -77,10 +86,10 @@ class Profile(models.Model):
         return self.user  
 
 class Business(models.Model):
-    name = models.CharField(max_length=200)
-    image = CloudinaryField('image')
+    name = models.CharField(max_length=200, blank=True,null=True)
+    image = CloudinaryField('image', default='image')
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)     
-    email =  models.CharField(max_length=100)
+    email =  models.CharField(max_length=100, blank=True,null=True)
     phone_no = models.IntegerField(blank=True)
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete=models.CASCADE, related_name='business',null=True)
     post_date = models.DateTimeField(auto_now=True)

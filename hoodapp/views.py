@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
+from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect,get_object_or_404
@@ -10,8 +12,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import ProfileForm,HoodForm,BusinessForm,PostForm
 from django.contrib.auth.decorators import login_required
-
-
+from .serializers import NeighbourHoodSerializer,BusinessSerializer,PostSerializer
+from rest_framework import generics,permissions
+from rest_framework.decorators import api_view 
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -22,6 +27,16 @@ def index(request):
     profiles = Profile.objects.filter(id = current_user.id).all()
     hoods = NeighbourHood.objects.all().order_by('-post_date')    
     return render(request, 'index.html',{"profiles": profiles, "hoods":hoods})
+
+@login_required(login_url='/accounts/login/')
+def about(request):
+    """_summary_
+    Args:
+        request (_type_): _description_
+    Returns:
+        _type_: _description_
+    """
+    return render(request, 'about.html')    
 
 @login_required(login_url='/accounts/login/')      
 def update_profile(request):
@@ -54,7 +69,7 @@ def createhood(request):
             hood = form.save(commit=False)
             hood.user = request.user
             hood.save()
-            return redirect ('index')
+            return redirect ('/index/')
         else:
             form = ProfileForm()
     return render(request,'create_hood.html',{'form':form})
@@ -78,14 +93,14 @@ def join_neighbourhood(request, id):
     neighbourhood = get_object_or_404(NeighbourHood, id=id)
     request.user.profile.neighbourhood = neighbourhood
     request.user.profile.save()
-    return redirect('index')
+    return redirect('/index/')
 
 
 def change_neighbourhood(request, id):
     neighbourhood = get_object_or_404(NeighbourHood, id=id)
     request.user.profile.neighbourhood = None
     request.user.profile.save()
-    return redirect('index')
+    return redirect('/index/')
 
 @login_required(login_url='/accounts/login/') 
 def createbusiness(request, id):
@@ -131,21 +146,42 @@ def search_results(request):
     message="You haven't searched for any term."  
     return render(request,'search.html',{"message":message,"results":searched_users})
 
-@login_required(login_url='/accounts/login/')
-def search_hoods(request):
-    searched_hoods=None
-    if 'hoods' in request.GET and request.GET["hoods"]:
-        search_term = request.GET.get('hoods')
-        searched_hoods = NeighbourHood.search_by_name(search_term)
-        message = f"{search_term}"
-        return render(request,'search_hood.html',{"message":message,"myhood":searched_hoods})
-    else:
-    
-     message="You haven't searched for any term."  
-    return render(request,'search_hood.html', {"message":message, "myhood":searched_hoods})    
+   
 
+class NeighbourhoodList(generics.ListCreateAPIView):
+    queryset = NeighbourHood.objects.all()
+    serializer_class = NeighbourHoodSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-@login_required(login_url='login')
-def logout_user(request):
-    logout(request)
-    return redirect('home')
+class NeighbourhoodDetail(generics.RetrieveUpdateDestroyAPIView):
+   queryset = NeighbourHood.objects.all()
+   serializer_class = NeighbourHoodSerializer
+   permission_classes = (permissions.IsAuthenticatedOrReadOnly,) 
+class BusinessList(generics.ListCreateAPIView):
+    queryset = Business.objects.all()
+    serializer_class = BusinessSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+class BusinessDetail(generics.RetrieveUpdateDestroyAPIView):
+   queryset = Business.objects.all()
+   serializer_class = BusinessSerializer
+   permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+   queryset = Post.objects.all()
+   serializer_class = PostSerializer
+   permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'hoods': reverse('hoods-list', request=request, format=format),
+        'business': reverse('business-list', request=request, format=format),
+        'posts': reverse('posts-list', request=request, format=format)
+
+    })

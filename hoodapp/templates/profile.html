@@ -33,7 +33,7 @@
                   <img class="prof-pic" src="{{profile.profile_pic.url}}" alt="">
                   <p class="mt-2">{{profile.user}}</p>
                   <p><i class="fas fa-quote-right me-2"></i>{{profile.bio}}</p>
-                  <h4>CONTACT INFORMATION</h4>
+                  
                   <p><i class="far fas fa-envelope me-2"></i>{{profile.email}}</p>
                   <p><i class="fas fa-phone me-2"></i>+254{{profile.phone_no}}</p>
                   {% if profile.neighbourhood %}
@@ -42,7 +42,7 @@
                   <p class="text-small text-muted"><i class="fas fa-home me-2"></i><em>Join a neighbourhood for it to be displayed here</em></p>
                   {% endif %} {% endfor %}
 
-                  <p>Update Your Profile First Below</p>
+            
                         <a href="{% url 'update_profile'%}"><button class="btn btn-secondary">Update Profile</button></a>
 
               </div>

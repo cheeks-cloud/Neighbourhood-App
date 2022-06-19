@@ -15,6 +15,8 @@ import django_heroku
 import dj_database_url
 from decouple import config, Csv
 import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -48,6 +50,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 cloudinary.config(
   cloud_name = "oyesa",
@@ -90,7 +94,7 @@ WSGI_APPLICATION = 'hoodproject.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-             'default': {
+        'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'myhood',
         'USER': 'postgres',
@@ -99,6 +103,7 @@ DATABASES = {
 }
 
 LOGIN_REDIRECT_URL = '/index/'
+LOGOUT_REDIRECT_URL = 'login/'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -143,3 +148,9 @@ STATICFILES_DIRS = [
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
+
