@@ -1,28 +1,33 @@
-{% extends 'base.html' %}
+{%extends "base.html"%} 
 {% load bootstrap4 %}
 {% load cloudinary %} 
  
 
+{% block content %}
 
-{% block content %}
-<div class="container-fluid">
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <div class="mt-3">
-      <div class="form">
-        <h5 class="text-center">Update Profile</h5>
-        <hr>
-        <form action="" enctype="multipart/form-data" method="POST">
-          {% csrf_token %} 
-          {% bootstrap_form form %}
-          <div class="form-group">
-            <input type="submit" name=""  class="btn btn-info btn-sm" value="Update">
-          </div>
-        </form>
-      </div>
+
+<div class="container " style="margin-top:7%">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class=" text-center mt-4" style="color:aqua; margin-left:30%">
+                <h2>Update Your Profile</h2>
+                <hr style="height:1px;border-width:2; background-color:#fafffe; margin-left: 18%; margin-right: 18%;" >
+              
+
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6 col-sm-12 mt-3" style="margin-left:39%;" >
+            <div class="prof-body">
+                <form action="{% url 'update_profile'%}" method="post" enctype="multipart/form-data" style="color: aqua;">
+
+                    {% csrf_token%} {% bootstrap_form form %}
+                    <div class="form-group text-center">
+                        <input type="submit" class="m-4 btn btn-success hood-btn login-btn" value="UPDATE PROFILE">
+                    </div>
+                    <input type="hidden" name="next" value="{{next}}">
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-</div>
-{% block content %}
+{% endblock %}
