@@ -33,10 +33,10 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 
 # Application definition
@@ -168,10 +168,10 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 10
+# }
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals()) 
