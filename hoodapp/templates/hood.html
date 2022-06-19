@@ -1,6 +1,17 @@
-{% load bootstrap4 %} {% load static%} {% block content%}
+{% load bootstrap4 %} {% load static%} 
+
+{% block styles %}
+{% bootstrap_css %}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+  <link rel="stylesheet" href="../../../static/css/index.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css?family=Tahoma" rel="stylesheet">
+{% endblock %}
  <!--navbar-->
  {% include "navbar.html" %}
+ 
+ {% block content%}
 <div class="container " style="margin-top:6%">
     <div class="sidebar">
 
