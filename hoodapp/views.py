@@ -8,7 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 
-from .serializers import NeighbourHoodSerializer,BusinessSerializer
+from .serializers import NeighbourHoodSerializer,BusinessSerializer,PostSerializer
 from rest_framework import generics
 # Create your views here.
 def home(request):
@@ -177,6 +177,12 @@ class BusinessDetail(generics.RetrieveUpdateDestroyAPIView):
    queryset = Business.objects.all()
    serializer_class = BusinessSerializer
 
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+   queryset = Post.objects.all()
+   serializer_class = PostSerializer
 
 

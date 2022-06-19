@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [ 
+  
   path("register", views.register_request, name="register"),
   path("login", views.login_request, name="login"),
   path("logout", views.logout_request, name= "logout"),
@@ -13,8 +14,14 @@ urlpatterns = [
   path('new_business/', views.new_business, name='new_business'),
   path('hoods', views.NeighbourhoodList.as_view()),
   path('hoods/<int:pk>/', views.NeighbourhoodDetail.as_view()),
+  path('business', views.BusinessList.as_view()),
+  path('business/<int:pk>/', views.BusinessDetail.as_view()),
+  path('posts', views.PostList.as_view()),
+  path('posts/<int:pk>/', views.PostDetail.as_view()),
+
 
 ]
+
 
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
