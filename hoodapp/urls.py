@@ -8,7 +8,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [ 
 
     path('admin/', admin.site.urls),
-    path('',views.index, name='index'),
+    path('',views.home, name='home'),
     path('profile-update/',views.update_profile, name='update_profile'), 
     path('profile/<pk>/',views.profile, name = 'profile'),
     path('create-hood/',views.createhood, name='createhood'), 
