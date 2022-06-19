@@ -1,10 +1,14 @@
 {%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static%}
 
 {% block content %}
 {{block.super}}
 <style>
-#projo-title{
+
+#hood-title{
 font-size:3vw;
+color:#08403d
 }
 .load{
     animation: slide 5s;
@@ -12,13 +16,14 @@ font-size:3vw;
 
 
 .slider{
-    height: 90vh;
+    height: 80vh;
     background-repeat:no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%;
     animation:slide 20s infinite;
     align-items: center;
+    
 }
 .content{
     color: #ffff;
@@ -94,8 +99,8 @@ font-size:3vw;
         </div>
         <div class="content">
             <div class="principal">
-                <h1>HoodVille</h1>
-                <p>The best Neighborhood Website in The City</p>
+                <h1>HOODVILLE</h1>
+                <p class="text-center" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS'; font-size: 1.8rem;">The best Neighborhood Website in The City</p>
                 <br><br>
                 
             </div>
@@ -104,36 +109,57 @@ font-size:3vw;
     </div>
     </div>
     
-
-<h2 class="text-center text-secondary" id="projo-title">Hoodville Hoods</h2>
-
-    <div class="container-fluid" >
-        <div class="row" >
-          
-           
-            <div class="col-md-4" >
-            <div class="card-group" >
-              <div class="card"  style="border:2px solid #032e2c; margin:5px; ">
-                <a href="">
-                <img class="card-img-top" src="" alt="Card image cap" height="300" width="300"/>
-                </a>
-                <div class="card-body">
-                  <h5 class="card-title text-center"><b>Name: </b></h5>
-                  <p class="card-text text-center"><b>Description:</b></p>
-                  <a href="" class="btn btn-info btn-centered">Go to hood</a>
-      
+        <div class="hood">
+            <h2 class="text-center mt-3" id="hood-title">Hoodville Hoods</h2>
+            <div class=" mt-5 available-section">
+                <div class="d-flex justify-content-center">
+                                
+                    <a href="{% url 'createhood'%}"><button class="btn btn-primary hood-btn">Create a Neighbourhood <i
+                        style="color: #fff;" class="fas fa-home"></i></button>
+                      
+                    </a>
+                    
                 </div>
-                <div class="card-footer">
-                  <small class="text-muted"><b>Date Posted:{{.date}}</b></small>
+            </div>
+            <div class="" id="target-home">
+                <div class="row">
+                    {% for hood in hoods %}
+                    <div class="col-lg-4 col-md-4 col-sm-6 ">
+                        <div class="hood-list">
+                            <div class="card p-0 m-3" >
+                                {% if hood.image %}
+                                <img class="card-img-top" src="{{ hood.image.url }}" alt="Card image cap" height="300px" width="520px"> {% else %}
+                                <p>No Image</p>
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title text-white"><i class="fas fa-map-marker-alt"></i> {{hood.name}}, {{hood.location}}</h5>
+                                    <p class="card-text" >{{hood.description}}</p>
+                                    <p class="text-muted">{{hood.neighbour.count}} <i class="fas mx-1 fa-users"></i></p>
+                                    <div class="d-flex justify-content-around">
+                                        {% if request.user.profile.neighbourhood == hood %}
+                                        <a href="{% url 'neighbourhood' id=hood.id %}">
+                                            <p style="color:#37ddc7">Visit Neighbourhood</p>
+                                        </a>
+                                        <a href="{% url 'change-neighbourhood' id=hood.id %}">
+                                            <p style="color: #ecb70b">Change Neighbourhood</p>
+                                        </a>
+                                        {% elif not request.user.profile.neighbourhood %}
+                                        <a href="{% url 'join-neighbourhood' hood.id %}">
+                                            <p>Join Neighbourhood</p>
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-              </div>
-          </div>
-          </div>
-          
+            </div>
         </div>
-        </div>
-      </div>
-      
+    </div>
+    
+    
 </body>
 
 
