@@ -137,6 +137,16 @@ def profile(request):
     }
     return render(request, 'profile.html', context)
 
+def about(request):
+    """_summary_
+    Args:
+        request (_type_): _description_
+    Returns:
+        _type_: _description_
+    """
+    return render(request, 'hoodapp/about.html')
+
+
 def update_profile(request):
     current_user = request.user
     if request.method == 'POST':
