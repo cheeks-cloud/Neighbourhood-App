@@ -8,6 +8,7 @@ urlpatterns = [
   path("profile/update/", views.update_profile, name="update_profile"),
   path('businesses/<id>', views.businesses, name='businesses'),
   path('new_business/', views.new_business, name='new_business'),
+  path('about/', views.about, name='about'),
 ]
 
 if settings.DEBUG:
