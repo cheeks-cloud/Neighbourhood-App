@@ -10,6 +10,9 @@ from django.contrib.auth.models import User
 
 from .serializers import NeighbourHoodSerializer,BusinessSerializer,PostSerializer
 from rest_framework import generics,permissions
+from rest_framework.decorators import api_view 
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -184,9 +187,17 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    
+
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
    queryset = Post.objects.all()
    serializer_class = PostSerializer
    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'hoods': reverse('hoods-list', request=request, format=format),
+        'business': reverse('business-list', request=request, format=format),
+        'posts': reverse('posts-list', request=request, format=format)
+
+    })
