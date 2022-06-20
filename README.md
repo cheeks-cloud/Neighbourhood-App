@@ -3,7 +3,7 @@ We recognize that thriving communities are made up of the neighbors and organiza
 
 ### Screenshots
 
-<img src="/home/moringa/Desktop/projects/python/Neighbourhood-App/screenshot/index.png" > 
+<img src="screenshot/index.png" > 
 <img src="/home/moringa/Desktop/projects/python/Neighbourhood-App/screenshot/login.png" > 
 
 
@@ -33,9 +33,9 @@ bash cd neighborhood
 - python manage.py test
 
 ## Technologies Used
-*Python3*
-*Django-Framework*
-*REST-API*
-*Heroku*
-*Postgres*
-*Cloudinary*
+*Python3*,
+*Django-Framework*,
+*REST-API*,
+*Heroku*,
+*Postgres*,
+*Cloudinary*,
