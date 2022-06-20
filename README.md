@@ -3,8 +3,8 @@ We recognize that thriving communities are made up of the neighbors and organiza
 
 ### Screenshots
 
-<img src="/home/moringa/Desktop/projects/python/Neighbourhood-App/screenshot/index.png" > 
-<img src="/home/moringa/Desktop/projects/python/Neighbourhood-App/screenshot/login.png" > 
+<img src="screenshot/index.png" > 
+<img src="screenshot/login" > 
 
 
 ## Setup/Installation Requirements
