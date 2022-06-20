@@ -1,7 +1,17 @@
+# HOODVILLE- 
+We recognize that thriving communities are made up of the neighbors and organizations that build stronger, more vibrant, and resilient neighborhoods.
+
+### Screenshots
+
+<img src="/home/moringa/Desktop/projects/python/Neighbourhood-App/screenshot/index.png" > 
+<img src="/home/moringa/Desktop/projects/python/Neighbourhood-App/screenshot/login.png" > 
+
+
 ## Setup/Installation Requirements
 
+1.Cloning the repository: https://github.com/oyesa/Neighbourhood-App.git
 
-1.Cloning the repository:
+**Clone to _development_ branch --'''git checkout development'''**
 
 
 2.Navigate into the folder and install requirements
@@ -23,4 +33,9 @@ bash cd neighborhood
 - python manage.py test
 
 ## Technologies Used
-* Python3
+*Python3*
+*Django-Framework*
+*REST-API*
+*Heroku*
+*Postgres*
+*Cloudinary*
