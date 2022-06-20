@@ -6,19 +6,19 @@ class NeighbourHoodSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NeighbourHood
-        fields = ('name', 'location', 'occupants_count', 'hood_image','admin')
+        fields = ('name', 'location', 'occupants_count', 'image','admin')
 
 class BusinessSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Business
-        fields = ('name', 'category', 'email', 'description','hood')
+        fields = ('name', 'phone_no', 'email', 'description','neighbourhood')
 
 class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('title', 'post_image', 'post', 'date_posted','hood','user')
+        fields = ('title', 'image', 'info', 'post_date','neighbourhood','user')
 
 
 

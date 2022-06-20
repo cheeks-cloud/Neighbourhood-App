@@ -1,69 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-dark text-light fixed-top mb-5" style="background-color: black; opacity: .9;">
-    <a class="navbar-brand" href=""style="color: white; font-weight:700;font-size: 30px;">Hood<span style="color:#a8eaf7; font-weight:700; font-size: 30px;">&nbsp;Ville</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-        aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark text-light fixed-top " style="background-color: black; opacity: .9; padding-bottom: 1%;">
+    <a class="navbar-brand" href="#"style="color: white; font-weight:700;font-size: 30px;">Hood<span style="color:#057c91; font-weight:700; font-size: 30px;">&nbsp;Ville</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href=""><i class="fas fa-home"></i>&nbsp;Home <span class="sr-only">(current)</span></a>
-            </li>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/index/"><i class="fas fa-home"></i>&nbsp;<span class="sr-only">(current)</span></a>
+        </li> 
+        <li class="nav-item active">
+          <a class="nav-link" href="/about/">&nbsp;<span>About</span></a>
+      </li> 
+          
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Profile&nbsp;<i class="fas fa-user-circle"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="">Profile</a>
-                    <a class="dropdown-item" href="">Add Hood</a>
-                    <a class="dropdown-item" href="">Add Post</a>
-                    <a class="dropdown-item" href="">My Hood</a>
-                    <a class="dropdown-item" href="">Posts</a>
+                    <a class="dropdown-item" href="{% url 'profile' pk=user.id%}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'createhood'%}">Add Hood</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Business&nbsp;<i class="fas fa-briefcase"></i>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="">Add Business&nbsp;<i class="fas fa-plus"></i></a>
-                    <a class="dropdown-item" href="">My Businesses</a>
-                  
-                </div>
-            </li>
-
-         <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    About Us&nbsp;<i class="fas fa-briefcase"></i>
-                </a>
-               
-            </li>   
-            </li>    
+    
+              <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Accounts&nbsp;<i class="fas fa-user-cog text-white"></i>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Change Password</a>
+                      <a class="dropdown-item" href="/logout/">Log out</a>
+                  </div>
+              </li>
         </ul>
-        <form class=" form" style="margin-left:40%" role="search" action="">
-            <div class="input-group " >
-              <input type="text" class="form-control" placeholder="Search Hood" name="search"  >
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="fas fa-search  text-white"  aria-hidden="true"></i></button>
-              </div>
+       
+          <li class="nav-item dropdown " style="margin-left:30%;  list-style-type: none;">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  ><img src="https://www.svgrepo.com/show/88703/api.svg"/>API </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href= "/hoods/">Hoods API</a>
+              <a class="dropdown-item" href="/business/">Business API</a>
+              <a class="dropdown-item" href="/posts/">Posts API</a>
+      
             </div>
             
-          </div>
+          </li>
+         
         
-          </form>    
-        <a style="padding-right:30% ;" href=""><i class="fas fa-user text-white"></i>&nbsp;</a>
-        <li class="nav-item dropdown " style="padding-right:4%; padding-top: -2%; list-style-type: none; ">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Accounts&nbsp;<i class="fas fa-user-cog text-white"></i>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/">Change Password</a>
-                <a class="dropdown-item" href="/">Log out</a>
-            </div>
-        </li>
-           
-    </div>
-</nav>
+          <a style=" margin-left: 5%; color: #fff" href="{% url 'profile' pk=user.id%}"><i class="fas fa-user text-white"></i>&nbsp;{{user.username}}</a>
+    
+ 
+
+      </div>
+        
+</nav> 
+
+  

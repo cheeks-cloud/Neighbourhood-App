@@ -3,15 +3,15 @@
     <div class="row">
         <div class="col-lg-12 col-md-6 col-sm-12">
             <div class="text-center mt-5">
-                <h1>POST YOUR BUSINESS FOR PEOPLE IN THE NEIGHBOURHOOD TO FIND!</h1>
+                <h1>KEEP YOUR NEIGHBOURHOOD IN THE KNOW!</h1>
             </div>
         </div>
-        <div class="col-lg-8 col-md-6 col-sm-12" style="margin-left: 19%;">
-            <div class="prof-body mt-3">
-                <form action="{% url 'create-business' id=hood.id %}" method="post" enctype="multipart/form-data" style="color:aqua; font-size:1.2rem;">
+        <div class="col-lg-8 col-md-6 col-sm-12 " style="margin-left: 19%;">
+            <div class="prof-body mt-5 ">
+                <form action="{% url 'post' hood_id=hood.id %}" method="post" enctype="multipart/form-data" style="color:aqua; font-size:1.2rem; ">
                     {% csrf_token%} {% bootstrap_form form %}
-                    <div class="form-group text-center">
-                        <input type="submit" class="m-4 btn btn-primary new-btn" value="Create Business">
+                    <div class="form-group text-center text-light" >
+                        <input type="submit" class="m-4 btn btn-success new-btn" value="Create Post">
                     </div>
                     <input type="hidden" name="next" value="{{next}}">
                 </form>
