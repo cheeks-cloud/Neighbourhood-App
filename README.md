@@ -4,7 +4,7 @@ We recognize that thriving communities are made up of the neighbors and organiza
 ### Screenshots
 
 <img src="screenshot/index.png" > 
-<img src="screenshot/login.png" > 
+<img src="screenshot/login" > 
 
 
 ## Setup/Installation Requirements
